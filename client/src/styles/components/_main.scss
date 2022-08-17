@@ -1,0 +1,33 @@
+.products__container {
+  padding: 4em;
+}
+
+.product__container {
+  text-align: center;
+}
+
+.main__heading {
+  padding: 3em;
+  text-align: center;
+}
+
+.product__img {
+  max-width: 100%;
+  width: 400px;
+}
+
+.add_to_cart_btn {
+  margin: 1.5em;
+  padding: 0.7em;
+  background-color: #b81f32;
+  color: white;
+  border-color: #b81f32;
+  border-width: 3px;
+  font-weight: bold;
+}
+
+.add_to_cart_btn:hover {
+  background-color: #a21b2c;
+  border-color: #a21b2c;
+}
+

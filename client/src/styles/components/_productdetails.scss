@@ -1,0 +1,40 @@
+#quantity_form {
+  text-align: center;
+}
+
+.toCart__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.to_cart_btn {
+  margin: 1em 1em 1em 0;
+  background-color: #a21b2c;
+  border-color: #a21b2c;
+}
+.to_cart_btn:hover {
+  background-color: #a21b2c;
+  border-color: #a21b2c;
+}
+
+.toppings__title {
+  margin-top: 1em;
+}
+
+.product__details__container {
+  margin: 5em;
+}
+
+.product__title {
+  margin-bottom: 1em;
+}
+
+.description {
+  margin-bottom: 1em;
+}
+
+.to__cart__container {
+  margin: 1em 1em 1em 0;
+  padding: 0;
+}

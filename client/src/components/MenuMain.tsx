@@ -1,4 +1,4 @@
-import Carousel from "react-bootstrap/Carousel";
+import React from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -10,23 +10,11 @@ import secondBanner from "../assets/imgs/boba-banner2.jpg";
 import productImage from "../assets/imgs/milktea-1.png";
 import { useNavigate } from "react-router-dom";
 
-const Main = () => {
+const MenuMain = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <Carousel>
-        <Carousel.Item>
-          <img className="d-block w-100" src={firstBanner} alt="First slide" />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={secondBanner}
-            alt="Second slide"
-          />
-        </Carousel.Item>
-      </Carousel>
-      <Container fluid="md" className="products__container">
+      <Container>
         <Row className="justify-content-md-center">
           <Col className="main__heading">
             <h3>Our Tea</h3>
@@ -61,4 +49,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MenuMain;

@@ -10,10 +10,19 @@
 
 .to_cart_btn {
   margin: 1em 1em 1em 0;
+  background-color: #b81f32;
+  color: white;
+  border-color: #b81f32;
+  border-width: 3px;
+  font-weight: bold;
+}
+
+.to_cart_btn:hover {
   background-color: #a21b2c;
   border-color: #a21b2c;
 }
-.to_cart_btn:hover {
+
+.to_cart_btn:focus {
   background-color: #a21b2c;
   border-color: #a21b2c;
 }

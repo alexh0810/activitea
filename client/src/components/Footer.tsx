@@ -7,7 +7,7 @@ import Stack from "react-bootstrap/Stack";
 
 import footerImage from "../assets/imgs/footer_banner.jpg";
 import badgeImage from "../assets/imgs/badge.png";
-import "../styles/components/_footer.scss";
+
 
 const Footer = () => {
   return (

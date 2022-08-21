@@ -8,15 +8,17 @@ import { FaShoppingCart } from "react-icons/fa";
 import Badge from "react-bootstrap/Badge";
 import Stack from "react-bootstrap/Stack";
 
-import "../styles/components/_navbar.scss";
 import logoImage from "../assets/imgs/bubble-tea.png";
+import { useNavigate } from "react-router-dom";
+
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Navbar collapseOnSelect expand="md" bg="light" variant="light">
         <Container className="navbar__container">
           <Col>
-            <Navbar.Brand className="nav_brand" href="#home">
+            <Navbar.Brand className="nav_brand" href="/">
               ActiviTea
             </Navbar.Brand>
             <Image className="logo_img" fluid src={logoImage}></Image>
@@ -25,16 +27,16 @@ const NavBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Container>
               <Nav className="me-auto">
-                <Nav.Link className="nav__link" href="#features">
+                <Nav.Link className="nav__link" href="/">
                   Home
                 </Nav.Link>
-                <Nav.Link className="nav__link" href="#pricing">
+                <Nav.Link className="nav__link" href="/menu">
                   Menu
                 </Nav.Link>
-                <Nav.Link className="nav__link" href="#pricing">
+                <Nav.Link className="nav__link" href="/about">
                   About
                 </Nav.Link>
-                <Nav.Link className="nav__link" href="#pricing">
+                <Nav.Link className="nav__link" href="/contact">
                   Contact
                 </Nav.Link>
               </Nav>
@@ -43,7 +45,11 @@ const NavBar = () => {
               <Badge className="cart__quantity" bg="secondary">
                 2
               </Badge>
-              <FaShoppingCart className="cart__logo" fontSize={28} />
+              <FaShoppingCart
+                className="cart__logo"
+                fontSize={28}
+                onClick={() => navigate("/cart")}
+              />
             </Stack>
           </Navbar.Collapse>
         </Container>

@@ -1,0 +1,25 @@
+.cart__container {
+  margin: 1em;
+}
+
+#item__quantity {
+  width: 20%;
+  max-width: 100%;
+  text-align: center;
+}
+
+.quantity__cell {
+  padding: 4px;
+}
+
+.quantity__btn {
+  border: none;
+  background-color: transparent;
+  padding: 0 0.3em 0 0.3em;
+  font-size: larger;
+}
+
+.total__container {
+  margin: 1em;
+  text-align: end;
+}

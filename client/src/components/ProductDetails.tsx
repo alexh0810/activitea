@@ -7,7 +7,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import productImage from "../assets/imgs/milktea-1.png";
-import "../styles/components/_productdetails.scss";
 
 const ProductDetails = () => {
   return (
@@ -59,11 +58,12 @@ const ProductDetails = () => {
                         size="sm"
                         type="number"
                         placeholder="1"
+                        min="1"
                         id="quantity_form"
                       />
                     </Col>
                     <Col sm={10} className="to__cart__container">
-                      <Button className="to_cart_btn">ADD TO CART</Button>
+                      <Button variant="outline-danger" className="to_cart_btn">ADD TO CART</Button>
                     </Col>
                   </Row>
                 </Container>

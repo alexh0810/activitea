@@ -7,8 +7,14 @@ import { FaTrash } from "react-icons/fa";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import productImage from "../assets/imgs/milktea-1.png";
+import { useAppSelector } from "../hooks/appHooks";
+import { isTypeNode } from "typescript";
+import { isRegExp } from "util/types";
 
 const CartTable = () => {
+  const cartItems = useAppSelector((state) => state.cartReducer.products);
+  const cart = useAppSelector((state) => state.cartReducer);
+
   return (
     <Container>
       <Row className="cart__container">
@@ -24,37 +30,32 @@ const CartTable = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Image
-                  fluid
-                  className="cart__image"
-                  width={150}
-                  src={productImage}
-                ></Image>
-              </td>
-              <td>Oolong Milktea</td>
-              <td>Boba</td>
-              <td>7$</td>
-              <td>
-                <button className="quantity__btn">
-                  <AiOutlinePlus />
-                </button>
-                1
-                <button className="quantity__btn">
-                  <AiOutlineMinus />
-                </button>
-              </td>
-              <td>7$</td>
-              <td>
-                <FaTrash />
-              </td>
-            </tr>
+            {cartItems &&
+              cartItems.map((item) => (
+                <tr>
+                  <td>
+                    <Image
+                      fluid
+                      className="cart__image"
+                      width={150}
+                      src={item.image}
+                    ></Image>
+                  </td>
+                  <td>{item.title}</td>
+                  <td>Boba</td>
+                  <td>${item.price}</td>
+                  <td>{item.quantity}</td>
+                  <td>${item.price * item.quantity}</td>
+                  <td>
+                    <FaTrash />
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </Row>
       <Row className="total__container">
-        <h3>Total: 7$ </h3>
+        <h3>Total ${cart.total}</h3>
       </Row>
     </Container>
   );

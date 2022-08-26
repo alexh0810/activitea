@@ -10,9 +10,12 @@ import Stack from "react-bootstrap/Stack";
 
 import logoImage from "../assets/imgs/bubble-tea.png";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../hooks/appHooks";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const quantity = useAppSelector((state) => state.cartReducer.quantity); 
+
   return (
     <div>
       <Navbar collapseOnSelect expand="md" bg="light" variant="light">
@@ -43,7 +46,7 @@ const NavBar = () => {
             </Container>
             <Stack className="cart__container">
               <Badge className="cart__quantity" bg="secondary">
-                2
+                {quantity}
               </Badge>
               <FaShoppingCart
                 className="cart__logo"

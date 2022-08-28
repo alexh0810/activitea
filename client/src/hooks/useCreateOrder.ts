@@ -7,11 +7,12 @@ import { useAppDispatch, useAppSelector } from "./appHooks";
 export const useCreateOrder = async (data: Order) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const cart = useAppSelector((state) => state.cartReducer);
+
   try {
     const res = await axios.post("http://localhost:5000/api/v1/orders", data);
     if (res.status === 201) {
       dispatch(resetCart());
+      navigate(`/orders/${res.data._id}`);
     }
   } catch (err) {
     console.log(err);

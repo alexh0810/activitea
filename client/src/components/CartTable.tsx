@@ -7,16 +7,23 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { FaTrash } from "react-icons/fa";
 
 import { useAppSelector } from "../hooks/appHooks";
+import OrderModal from "./OrderModal";
+import { useCreateOrder } from "../hooks/useCreateOrder";
 
 const CartTable = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.products);
   const cart = useAppSelector((state) => state.cartReducer);
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
+
   const [show, setShow] = useState(false);
 
+  const handleOpenModal = () => {
+    setShow(true);
+    setCash(true);
+  };
+  
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <Container>
@@ -68,7 +75,11 @@ const CartTable = () => {
                 <ListGroup.Item>Total: ${cart.total}</ListGroup.Item>
               </ListGroup>
               {open ? (
-                <Button variant="danger" className="checkout_btn">
+                <Button
+                  variant="danger"
+                  className="checkout_btn"
+                  onClick={handleOpenModal}
+                >
                   CASH ON DELIVERY
                 </Button>
               ) : (
@@ -84,6 +95,9 @@ const CartTable = () => {
           </Card>
         </Col>
       </Row>
+      {cash && (
+        <OrderModal total={cart.total} show={show} handleClose={handleClose} />
+      )}
     </Container>
   );
 };

@@ -4,13 +4,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 
 const Cart = () => {
-  return (
-    <div>
-      <NavBar />
-      <CartTable />
-      <Footer />
-    </div>
-  );
+  return <CartTable />;
 };
 
 export default Cart;

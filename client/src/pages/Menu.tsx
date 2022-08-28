@@ -5,7 +5,6 @@ import NavBar from "../components/NavBar";
 const Menu = () => {
   return (
     <div>
-      <NavBar />
       <MenuMain />
     </div>
   );

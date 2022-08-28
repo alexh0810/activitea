@@ -1,7 +1,6 @@
 .footer__container {
-  padding: 0;
-  margin: 0;
   background-color: #382b20;
+  display: flex;
 }
 
 .footer__img {
@@ -10,12 +9,11 @@
 
 .footer__right {
   color: white;
-  padding: 0;
-  margin: 2em;
+  padding: 3em 1em 3em 1em;
 }
 
 .footer__right__list {
-  margin: 1em 1em 0 1em;
+  margin: 1em 1em 1em 1em;
 }
 
 .footer__right__listitems {

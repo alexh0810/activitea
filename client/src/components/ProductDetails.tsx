@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 import { useParams } from "react-router-dom";
 import { useProduct } from "../hooks/useProduct";
@@ -33,78 +34,78 @@ const ProductDetails = () => {
     <div>
       <Container>
         <Row>
-          <Col>
-            <Image fluid src={product?.image}></Image>
-          </Col>
-          <Col>
-            <Container className="product__details__container">
-              <Col className="product__title">
-                <h2>{product?.title}</h2>
-              </Col>
-              <Col className="description">
-                <p>{product?.description}</p>
-              </Col>
-              <Col>
-                <Form.Select
-                  aria-label="Default select example"
-                  onChange={handleChange}
-                >
-                  <option>Choose a size</option>
-                  {product &&
-                    product.size.map((size, index) => (
-                      <option key={index} value={index}>
-                        {size}
-                      </option>
-                    ))}
-                </Form.Select>
+            <Col>
+              <Image fluid src={product?.image}></Image>
+            </Col>
+            <Col>
+              <Container className="product__details__container">
+                <Col className="product__title">
+                  <h2>{product?.title}</h2>
+                </Col>
+                <Col className="description">
+                  <p>{product?.description}</p>
+                </Col>
+                <Col>
+                  <Form.Select
+                    aria-label="Default select example"
+                    onChange={handleChange}
+                  >
+                    <option>Choose a size</option>
+                    {product &&
+                      product.size.map((size, index) => (
+                        <option key={index} value={index}>
+                          {size}
+                        </option>
+                      ))}
+                  </Form.Select>
 
-                <p className="toppings__title">Extra toppings</p>
-                <Form.Check
-                  type="checkbox"
-                  id="toppings_list"
-                  label="Double boba (+1$)"
-                ></Form.Check>
-                <Form.Check
-                  type="checkbox"
-                  id="toppings_list"
-                  label="Chia seeds (+1$)"
-                ></Form.Check>
-                <Form.Check
-                  type="checkbox"
-                  id="toppings_list"
-                  label="Flan (+1$)"
-                ></Form.Check>
-                <Form.Check
-                  type="checkbox"
-                  id="toppings_list"
-                  label="Almond Jelly (+1$)"
-                ></Form.Check>
-                <Container>
-                  <Row className="toCart__container">
-                    <Col className="quantity__form__container">
-                      <Form.Control
-                        size="sm"
-                        type="number"
-                        placeholder="1"
-                        min="1"
-                        id="quantity_form"
-                        onChange={(e) => setQuantity(Number(e.target.value))}
-                      />
-                    </Col>
-                    <Col sm={10} className="to__cart__container">
-                      <Button
-                        variant="outline-danger"
-                        className="to_cart_btn"
-                        onClick={handleClick}
-                      >
-                        ADD TO CART
-                      </Button>
-                    </Col>
-                  </Row>
-                </Container>
-              </Col>
-            </Container>
-          </Col>
+                  <p className="toppings__title">Extra toppings</p>
+                  <Form.Check
+                    type="checkbox"
+                    id="toppings_list"
+                    label="Double boba (+1$)"
+                  ></Form.Check>
+                  <Form.Check
+                    type="checkbox"
+                    id="toppings_list"
+                    label="Chia seeds (+1$)"
+                  ></Form.Check>
+                  <Form.Check
+                    type="checkbox"
+                    id="toppings_list"
+                    label="Flan (+1$)"
+                  ></Form.Check>
+                  <Form.Check
+                    type="checkbox"
+                    id="toppings_list"
+                    label="Almond Jelly (+1$)"
+                  ></Form.Check>
+                  <Container>
+                    <Row className="toCart__container">
+                      <Col className="quantity__form__container">
+                        <Form.Control
+                          size="sm"
+                          type="number"
+                          placeholder="1"
+                          min="1"
+                          id="quantity_form"
+                          onChange={(e) => setQuantity(Number(e.target.value))}
+                        />
+                      </Col>
+                      <Col sm={10} className="to__cart__container">
+                        <Button
+                          variant="outline-danger"
+                          className="to_cart_btn"
+                          onClick={handleClick}
+                        >
+                          ADD TO CART
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Col>
+              </Container>
+            </Col>
         </Row>
       </Container>
     </div>

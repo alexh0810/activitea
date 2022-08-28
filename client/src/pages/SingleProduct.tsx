@@ -5,7 +5,6 @@ import ProductDetails from "../components/ProductDetails";
 const SingleProduct = () => {
   return (
     <div>
-      <NavBar />
       <ProductDetails />
     </div>
   );

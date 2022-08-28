@@ -1,0 +1,19 @@
+.order__container {
+  margin: 1em;
+}
+
+.status_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1em 10em 1em 0;
+  margin: 0 0 0 1em;
+}
+
+.status_stack {
+  align-items: center;
+}
+
+.status__icon {
+  font-size: 25px;
+}

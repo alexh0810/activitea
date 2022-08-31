@@ -4,12 +4,12 @@ import { resetCart } from "../redux/reducers/cartReducer";
 import { Order } from "../types/order";
 import { useAppDispatch, useAppSelector } from "./appHooks";
 
-export const useCreateOrder = async (data: Order) => {
+export const useCreateOrder = async (data: Partial<Order>) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   try {
-    const res = await axios.post("http://localhost:5000/api/v1/orders", data);
+    const res = await axios.post("https://activitea-be.herokuapp.com/api/v1/orders", data);
     if (res.status === 201) {
       dispatch(resetCart());
       navigate(`/orders/${res.data._id}`);

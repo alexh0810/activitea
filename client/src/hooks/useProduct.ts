@@ -10,7 +10,7 @@ export const useProduct = (productId: string | undefined) => {
     if (productId) {
       try {
         axios
-          .get(`http://localhost:5000/api/v1/products/${productId}`)
+          .get(`https://activitea-be.herokuapp.com/api/v1/products/${productId}`)
           .then(function (response) {
             setProduct(response.data);
           });

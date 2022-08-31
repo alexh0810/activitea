@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Card, Table, Stack } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -7,7 +7,27 @@ import { BsCupStraw } from "react-icons/bs";
 import { TbBike } from "react-icons/tb";
 import { TiTick } from "react-icons/ti";
 
-const OrderDetails = () => {
+import { useGetOrder } from "../hooks/useGetOrder";
+
+const OrderDetails = ({ orderId }: any) => {
+  const order = useGetOrder(orderId.orderId);
+  const status = order?.status;
+  console.log(status);
+
+  const statusClass = (index: number) => {
+    if (status != null && status != undefined) {
+      if (index - status < 1) {
+        return "done";
+      }
+      if (index - status === 1) {
+        return "inProgress";
+      }
+      if (index - status > 1) {
+        return "undone";
+      }
+    }
+  };
+
   return (
     <Container>
       <Row className="order__container">
@@ -15,7 +35,7 @@ const OrderDetails = () => {
           <Table responsive="sm" borderless>
             <thead>
               <tr>
-                <th>Order ID</th>
+                <th>ID</th>
                 <th>Customer</th>
                 <th>Address</th>
                 <th>Total</th>
@@ -23,34 +43,34 @@ const OrderDetails = () => {
             </thead>
             <tbody>
               <tr>
-                <td>12345</td>
-                <td>Harry Potter</td>
-                <td>Kalevankatu 12a, 778899, HELSINKI</td>
-                <td>Total: $16</td>
+                <td>{order?._id}</td>
+                <td>{order?.customer}</td>
+                <td>{order?.address}</td>
+                <td>${order?.total}</td>
               </tr>
             </tbody>
           </Table>
           <Row>
             <Container className="status_container">
-              <Stack className="status_stack">
+              <Stack className={statusClass(0)}>
                 <MdOutlinePayment className="status__icon" />
                 <span className="status__text">Payment</span>
-                <TiTick className="status__icon" />
+                <TiTick className="checkedIcon" />
               </Stack>
-              <Stack className="status_stack">
+              <Stack className={statusClass(1)}>
                 <BsCupStraw className="status__icon" />
                 <span>Preparing</span>
-                <TiTick className="status__icon" />
+                <TiTick className="checkedIcon" />
               </Stack>
-              <Stack className="status_stack">
+              <Stack className={statusClass(2)}>
                 <TbBike className="status__icon" />
-                <span>Preparing</span>
-                <TiTick className="status__icon" />
+                <span>On the way</span>
+                <TiTick className="checkedIcon" />
               </Stack>
-              <Stack className="status_stack">
+              <Stack className={statusClass(3)}>
                 <MdOutlineHomeWork className="status__icon" />
-                <span>Preparing</span>
-                <TiTick className="status__icon" />
+                <span>Delivered</span>
+                <TiTick className="checkedIcon" />
               </Stack>
             </Container>
           </Row>
@@ -60,9 +80,9 @@ const OrderDetails = () => {
             <Card.Body className="total_card_body">
               <Card.Title className="total_card_title">CART TOTAL</Card.Title>
               <ListGroup variant="flush">
-                <ListGroup.Item>Subtotal: $</ListGroup.Item>
+                <ListGroup.Item>Subtotal: ${order?.total}</ListGroup.Item>
                 <ListGroup.Item>Discount: $0.00 </ListGroup.Item>
-                <ListGroup.Item>Total: $</ListGroup.Item>
+                <ListGroup.Item>Total: ${order?.total}</ListGroup.Item>
               </ListGroup>
               <Button disabled variant="danger" className="checkout_btn">
                 PAID

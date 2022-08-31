@@ -1,13 +1,31 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { useCreateOrder } from "../hooks/useCreateOrder";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../hooks/appHooks";
+import { resetCart } from "../redux/reducers/cartReducer";
+import { Order } from "../types/order";
 
 const OrderModal = ({ total, show, handleClose }: any) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [customer, setCustomer] = useState("");
   const [address, setAddress] = useState("");
 
+  const createOrder = async (data: Partial<Order>) => {
+    try {
+      const res = await axios.post("https://activitea-be.herokuapp.com/api/v1/orders", data);
+      if (res.status === 201) {
+        dispatch(resetCart());
+        navigate(`/orders/${res.data._id}`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleClick = () => {
-    useCreateOrder({ customer, address, total, status: 0 });
+    createOrder({ customer, address, total });
   };
 
   return (

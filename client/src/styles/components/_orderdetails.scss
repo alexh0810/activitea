@@ -10,10 +10,37 @@
   margin: 0 0 0 1em;
 }
 
-.status_stack {
-  align-items: center;
-}
-
 .status__icon {
   font-size: 25px;
 }
+
+.done {
+  align-items: center;
+}
+
+.inProgress {
+  align-items: center;
+  animation: inProgress 1s ease infinite alternate;
+}
+
+@keyframes inProgress {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.undone {
+  align-items: center;
+  opacity: 0.3;
+}
+
+.undone .checkedIcon,
+.inProgress .checkedIcon {
+  display: none;
+}
+
+
+

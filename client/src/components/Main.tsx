@@ -23,7 +23,6 @@ const Main = () => {
     dispatch(fetchProducts());
   }, []);
 
-  console.log(products);
 
   return (
     <div>

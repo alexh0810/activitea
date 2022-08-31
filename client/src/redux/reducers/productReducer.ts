@@ -6,7 +6,7 @@ const initialState: Product[] = [];
 
 export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/v1/products");
+    const response = await axios.get("https://activitea-be.herokuapp.com/api/v1/products");
     return response.data; 
   } catch (err) {
     console.log(err);

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Footer from "../components/Footer";
+import { useParams } from "react-router-dom";
 
-import NavBar from "../components/NavBar";
 import OrderDetails from "../components/OrderDetails";
 
 const Order = () => {
-  return <OrderDetails />;
+  const orderId = useParams();
+  return <OrderDetails orderId={orderId} />;
 };
 
 export default Order;

@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 
 import productImage from "../assets/imgs/milktea-1.png";
+import { useAppDispatch, useAppSelector } from "../hooks/appHooks";
+import { fetchOrders } from "../redux/reducers/orderReducer";
 
 const Dashboard = () => {
+  const orders = useAppSelector((state) => state.orderReducer);
+  useEffect(() => {
+    fetchOrders();
+  }, [orders]);
+
+  console.log(orders);
+
   return (
     <Container className="dashboard_container">
       <Row>
@@ -41,8 +50,12 @@ const Dashboard = () => {
                 <td>Gongcha milktea</td>
                 <td>$8</td>
                 <td>
-                  <Button variant="primary">EDIT</Button>
-                  <Button variant="danger">DELETE</Button>
+                  <Button className="dashboard_btn" variant="primary">
+                    EDIT
+                  </Button>
+                  <Button className="dashboard_btn" variant="danger">
+                    DELETE
+                  </Button>
                 </td>
               </tr>
             </tbody>
@@ -68,7 +81,9 @@ const Dashboard = () => {
                 <td>PAID</td>
                 <td>PREPARING</td>
                 <td>
-                  <Button variant="primary">NEXT STAGE</Button>
+                  <Button className="dashboard_btn" variant="primary">
+                    NEXT STAGE
+                  </Button>
                 </td>
               </tr>
             </tbody>

@@ -36,7 +36,7 @@ const MenuMain = () => {
             <Col key={product._id} sm={4} className="product__container">
               <Image
                 src={product.image}
-                onClick={() => navigate(`${product._id}`)}
+                onClick={() => navigate(`/${product._id}`)}
                 className="product__img"
               ></Image>
               <h4>{product.title}</h4>
@@ -46,34 +46,6 @@ const MenuMain = () => {
               </Button>
             </Col>
           ))}
-          <Col sm={4} className="product__container">
-            <Image src={productImage} className="product__img"></Image>
-            <h4>Oloong milk tea</h4>
-            <h5>7$</h5>
-            <Button variant="outline-danger" className="add_to_cart_btn">
-              ADD TO CART
-            </Button>
-          </Col>
-          <Col sm={4} className="product__container">
-            <Image src={productImage} className="product__img"></Image>
-            <h4>Oloong milk tea</h4>
-            <h5>7$</h5>
-            <Button variant="outline-danger" className="add_to_cart_btn">
-              ADD TO CART
-            </Button>
-          </Col>
-          <Col sm={4} className="product__container">
-            <Image
-              onClick={() => navigate("/:productId")}
-              src={productImage}
-              className="product__img"
-            ></Image>
-            <h4>Oloong milk tea</h4>
-            <h5>7$</h5>
-            <Button variant="outline-danger" className="add_to_cart_btn">
-              ADD TO CART
-            </Button>
-          </Col>
         </Row>
       </Container>
     </div>

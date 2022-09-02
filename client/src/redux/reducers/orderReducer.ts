@@ -7,13 +7,14 @@ const initialState: Order[] = [];
 export const fetchOrders = createAsyncThunk("fetchOrders", async () => {
     try {
       const response = await axios.get("https://activitea-be.herokuapp.com/api/v1/orders");
+      console.log(response.data)
       return response.data; 
     } catch (err) {
       console.log(err);
     }
 });
 
-    
+
 const orderSlice = createSlice({
     name: "orderReducer",
     initialState: initialState,

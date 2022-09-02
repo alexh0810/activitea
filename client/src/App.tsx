@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Menu from "./pages/Menu";
 import Order from "./pages/Order";
 import SingleProduct from "./pages/SingleProduct";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/orders/:orderId" element={<Order />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/admin/login" element={<Login />}></Route>
         </Routes>
         <Footer />
       </div>

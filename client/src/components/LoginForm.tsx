@@ -17,8 +17,12 @@ const LoginForm = () => {
         {
           username,
           password,
+        },
+        {
+          withCredentials: true,
         }
       );
+      navigate("/admin");
     } catch (err) {
       setError(true);
     }

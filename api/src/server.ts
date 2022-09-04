@@ -8,12 +8,7 @@ import logger from './util/logger'
 const mongoUrl = MONGODB_URI
 
 mongoose
-  .connect(mongoUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
+  .connect(mongoUrl)
   .then(() => {
     logger.info('Connected to MongoDB')
   })

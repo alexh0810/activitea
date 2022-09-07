@@ -1,19 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
+import { MdEdit } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 
-import productImage from "../assets/imgs/milktea-1.png";
 import { useAppDispatch, useAppSelector } from "../hooks/appHooks";
-import { fetchOrders } from "../redux/reducers/orderReducer";
+import { fetchOrders, updateStatus } from "../redux/reducers/orderReducer";
+import { fetchProducts } from "../redux/reducers/productReducer";
+import { Order, updatedOrder } from "../types/order";
 
 const Dashboard = () => {
   const orders = useAppSelector((state) => state.orderReducer);
-  useEffect(() => {
-    fetchOrders();
-  }, [orders]);
+  const products = useAppSelector((state) => state.productReducer);
+  const dispatch = useAppDispatch();
+  const status = ["Preparing", "On The Way", "Delivered"];
 
-  console.log(orders);
+  useEffect(() => {
+    dispatch(fetchOrders());
+    dispatch(fetchProducts());
+  }, []);
+
+  const handleStatus = async (
+    orderId: string,
+    address: string,
+    status: 0 | 1 | 2 | 3
+  ) => {
+    if (status < 3) {
+      const updatedStatus = status + 1;
+      const updatedOrder = {
+        orderId,
+        address,
+        updatedStatus,
+      };
+      dispatch(updateStatus(updatedOrder));
+    }
+  };
 
   return (
     <Container className="dashboard_container">
@@ -27,7 +49,7 @@ const Dashboard = () => {
       </Row>
       <Row>
         <Col>
-          <Table responsive="sm" borderless>
+          <Table responsive="xl" borderless>
             <thead>
               <tr>
                 <th>Image</th>
@@ -37,27 +59,26 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <Image
-                    fluid
-                    className="cart__image"
-                    width={100}
-                    src={productImage}
-                  ></Image>
-                </td>
-                <td>1234</td>
-                <td>Gongcha milktea</td>
-                <td>$8</td>
-                <td>
-                  <Button className="dashboard_btn" variant="primary">
-                    EDIT
-                  </Button>
-                  <Button className="dashboard_btn" variant="danger">
-                    DELETE
-                  </Button>
-                </td>
-              </tr>
+              {products &&
+                products.map((product) => (
+                  <tr>
+                    <td>
+                      <Image
+                        fluid
+                        className="cart__image"
+                        width={100}
+                        src={product.image}
+                      ></Image>
+                    </td>
+                    <td>{product._id.slice(0, 5)}...</td>
+                    <td>{product.title}</td>
+                    <td>{product.prices[0]}</td>
+                    <td>
+                      <MdEdit />
+                      <AiFillDelete />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </Col>
@@ -74,18 +95,27 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1234</td>
-                <td>Jon Snow</td>
-                <td>$8</td>
-                <td>PAID</td>
-                <td>PREPARING</td>
-                <td>
-                  <Button className="dashboard_btn" variant="primary">
-                    NEXT STAGE
-                  </Button>
-                </td>
-              </tr>
+              {orders &&
+                orders.map((order: Order) => (
+                  <tr key={order._id}>
+                    <td>{order?._id.slice(0, 5)}...</td>
+                    <td>{order?.customer}</td>
+                    <td>{order?.total}</td>
+                    <td>PAID</td>
+                    <td>{status[order?.status]}</td>
+                    <td>
+                      <Button
+                        onClick={() =>
+                          handleStatus(order._id, order.address, order.status)
+                        }
+                        className="dashboard_btn"
+                        variant="primary"
+                      >
+                        NEXT STAGE
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </Col>

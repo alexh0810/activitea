@@ -5,3 +5,10 @@ export interface Order {
   total: number;
   status: 0 | 1 | 2 | 3;
 }
+
+export interface updatedOrder {
+  orderId: string;
+  address: string;
+  updatedStatus: number;
+}
+

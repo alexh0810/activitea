@@ -1,4 +1,5 @@
 import mongoose, { Document } from 'mongoose'
+import passportLocalMongoose from 'passport-local-mongoose'
 
 export type UserDocument = Document & {
   username: string

@@ -1,6 +1,26 @@
 import cookie from 'cookie'
 import { NextFunction, Request, Response } from 'express'
+import User from '../models/User'
+import userService from '../services/userService'
 import ApiError from '../helpers/apiError'
+
+const createNewUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    let { username, password } = req.body
+    const user = new User({
+      username,
+      password,
+    })
+    const newUser = await userService.createUser(user)
+    return res.status(201).json(newUser)
+  } catch (e) {
+    next(e)
+  }
+}
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
   const { username, password } = req.body
@@ -12,7 +32,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     res.setHeader(
       'Set-Cookie',
       cookie.serialize('token', token, {
-        maxAge: 60 * 60,
+        maxAge: 60 * 60 * 10000,
         sameSite: 'none',
         secure: true,
         path: '/',
@@ -24,4 +44,4 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-export default { login }
+export default { login, createNewUser }

@@ -6,3 +6,9 @@ export interface Product {
   size: ["M", "L"] | ["M"] | ["L"];
   image: string;
 }
+
+export interface updatedProduct {
+  productId: string;
+  prices: [number];
+  size: ["M", "L"] | ["M"] | ["L"];
+}

@@ -14,7 +14,7 @@ import { useAppSelector } from "../hooks/appHooks";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const quantity = useAppSelector((state) => state.cartReducer.quantity); 
+  const quantity = useAppSelector((state) => state.cartReducer.quantity);
 
   return (
     <div>
@@ -32,12 +32,6 @@ const NavBar = () => {
               <Nav className="me-auto">
                 <Nav.Link className="nav__link" href="/">
                   Home
-                </Nav.Link>
-                <Nav.Link className="nav__link" href="/menu">
-                  Menu
-                </Nav.Link>
-                <Nav.Link className="nav__link" href="/about">
-                  About
                 </Nav.Link>
                 <Nav.Link className="nav__link" href="/contact">
                   Contact

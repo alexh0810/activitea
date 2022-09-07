@@ -4,16 +4,25 @@ import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 import { MdEdit } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../hooks/appHooks";
 import { fetchOrders, updateStatus } from "../redux/reducers/orderReducer";
-import { fetchProducts } from "../redux/reducers/productReducer";
-import { Order, updatedOrder } from "../types/order";
+import {
+  deleteSingleProduct,
+  editSingleProduct,
+  fetchProducts,
+} from "../redux/reducers/productReducer";
+import { Order } from "../types/order";
 
 const Dashboard = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const orders = useAppSelector((state) => state.orderReducer);
   const products = useAppSelector((state) => state.productReducer);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const status = ["Preparing", "On The Way", "Delivered"];
 
   useEffect(() => {
@@ -35,6 +44,16 @@ const Dashboard = () => {
       };
       dispatch(updateStatus(updatedOrder));
     }
+  };
+
+  const handleEditProduct = async (productId: string) => {
+    const updatedProduct = {
+      productId,
+    };
+  };
+
+  const handleDeleteProduct = async (productId: string) => {
+    dispatch(deleteSingleProduct(productId));
   };
 
   return (
@@ -62,7 +81,7 @@ const Dashboard = () => {
               {products &&
                 products.map((product) => (
                   <tr>
-                    <td>
+                    <td key={product._id}>
                       <Image
                         fluid
                         className="cart__image"
@@ -74,8 +93,10 @@ const Dashboard = () => {
                     <td>{product.title}</td>
                     <td>{product.prices[0]}</td>
                     <td>
-                      <MdEdit />
-                      <AiFillDelete />
+                      <MdEdit onClick={() => handleEditProduct(product._id)} />
+                      <AiFillDelete
+                        onClick={() => handleDeleteProduct(product._id)}
+                      />
                     </td>
                   </tr>
                 ))}

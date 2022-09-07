@@ -10,7 +10,7 @@ const createNewUser = async (
   next: NextFunction
 ) => {
   try {
-    let { username, password } = req.body
+    const { username, password } = req.body
     const user = new User({
       username,
       password,

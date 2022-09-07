@@ -22,7 +22,7 @@ const CartTable = () => {
     setShow(true);
     setCash(true);
   };
-  
+
   const handleClose = () => setShow(false);
 
   return (

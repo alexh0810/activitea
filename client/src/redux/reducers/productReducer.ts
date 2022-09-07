@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Product } from "../../types/product";
+import { Product, updatedProduct } from "../../types/product";
 
 const initialState: Product[] = [];
 
@@ -34,10 +34,15 @@ export const deleteSingleProduct = createAsyncThunk(
 
 export const editSingleProduct = createAsyncThunk(
   "editSingleProduct",
-  async (productId: String) => {
+  async (updatedProduct: updatedProduct) => {
+    const { productId, size, prices } = updatedProduct;
     try {
       const response = await axios.put(
         `https://activitea-be.herokuapp.com/api/v1/products/${productId}`,
+        {
+          size: size,
+          prices: prices,
+        },
         {
           withCredentials: true,
         }
@@ -58,10 +63,13 @@ const productSlice = createSlice({
       return action.payload;
     });
     build.addCase(editSingleProduct.fulfilled, (state, action) => {
-      return action.payload;
+      return [
+        ...state.filter((product) => product._id != action.payload._id),
+        action.payload,
+      ];
     });
     build.addCase(deleteSingleProduct.fulfilled, (state, action) => {
-      return action.payload;
+      return state.filter((product) => product._id != action.payload._id);
     });
   },
 });

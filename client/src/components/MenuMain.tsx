@@ -16,7 +16,7 @@ import { Product } from "../types/product";
 
 const MenuMain = () => {
   const navigate = useNavigate();
-  const products = useAppSelector((state: any) => state.productReducer);
+  const products = useAppSelector((state) => state.productReducer);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

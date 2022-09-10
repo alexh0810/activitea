@@ -17,8 +17,6 @@ import {
 import { Order } from "../types/order";
 
 const Dashboard = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const orders = useAppSelector((state) => state.orderReducer);
   const products = useAppSelector((state) => state.productReducer);
   const dispatch = useAppDispatch();

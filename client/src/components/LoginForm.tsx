@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   const handleClick = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://activitea-be.herokuapp.com/api/v1/admin/login",
         {
           username,

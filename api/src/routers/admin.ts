@@ -6,4 +6,5 @@ const admin = Router()
 
 admin.post('/login', adminController.login)
 admin.post('/signup', adminController.createNewUser)
+
 export default admin

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.252534fd.css",
+    "main.js": "/static/js/main.05169161.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/footer_banner.jpg": "/static/media/footer_banner.6ff7ef1da9d7b79837da.jpg",
+    "static/media/boba-banner.jpg": "/static/media/boba-banner.06c315fcc14d07ef6909.jpg",
+    "static/media/boba-banner2.jpg": "/static/media/boba-banner2.6e0361ec2ec0435114af.jpg",
+    "static/media/badge.png": "/static/media/badge.994821a9ffe37c77dcbd.png",
+    "static/media/bubble-tea.png": "/static/media/bubble-tea.15ccaa4d8ef24af98560.png",
+    "index.html": "/index.html",
+    "main.252534fd.css.map": "/static/css/main.252534fd.css.map",
+    "main.05169161.js.map": "/static/js/main.05169161.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.252534fd.css",
+    "static/js/main.05169161.js"
+  ]
+}

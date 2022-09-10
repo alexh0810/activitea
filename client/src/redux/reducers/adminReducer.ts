@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { axiosInstance } from "../../config/config";
 
 const initialState = "";
 
@@ -7,13 +8,10 @@ export const login = createAsyncThunk(
   "login",
   async ({ username, password }: any) => {
     try {
-      const result = await axios.post(
-        "https://activitea-be.herokuapp.com/api/v1/admin/login",
-        {
-          username,
-          password,
-        }
-      );
+      const result = await axiosInstance.post("/admin/login", {
+        username,
+        password,
+      });
       console.log(result);
     } catch (err) {
       console.log(err);

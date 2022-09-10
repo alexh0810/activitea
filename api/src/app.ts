@@ -15,11 +15,9 @@ import path from 'path'
 dotenv.config({ path: '.env' })
 const app = express()
 
-const publicPath = path.resolve(__dirname, '../../client/build')
-
-app.use(express.static(publicPath))
+app.use(express.static('public'))
 app.get('/', (_req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'))
+  res.sendFile(path.join(__dirname + '/public/index.html'))
 })
 
 // Express configuration

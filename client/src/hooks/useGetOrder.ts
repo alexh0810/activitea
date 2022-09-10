@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { axiosInstance } from "../config/config";
 
 import { Order } from "../types/order";
 
@@ -9,11 +10,9 @@ export const useGetOrder = (orderId: string | undefined) => {
   useEffect(() => {
     if (orderId) {
       try {
-        axios
-          .get(`https://activitea-be.herokuapp.com/api/v1/orders/${orderId}`)
-          .then(function (response) {
-            setOrder(response.data);
-          });
+        axiosInstance.get(`/orders/${orderId}`).then(function (response) {
+          setOrder(response.data);
+        });
       } catch (err) {
         console.log(err);
       }

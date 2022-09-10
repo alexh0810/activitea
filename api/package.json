@@ -16,7 +16,6 @@
     "start:prod": "node dist/server.js",
     "start:dev": "nodemon src/server.ts",
     "build": "tsc",
-    "heroku-postbuild": "cd ../client && yarn install && yarn build",
     "watch-ts": "tsc -w",
     "test": "jest --forceExit --detectOpenHandles --coverage --verbose false --config jest.config.js",
     "watch-test": "npm run test -- --watchAll",

@@ -1,18 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import { axiosInstance } from "../../config/config";
 import { Order, updatedOrder } from "../../types/order";
 
 const initialState: Order[] = [];
 
 export const fetchOrders = createAsyncThunk("fetchOrders", async () => {
   try {
-    const response = await axios.get(
-      "https://activitea-be.herokuapp.com/api/v1/orders",
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axiosInstance.get("/orders", {
+      withCredentials: true,
+    });
     return response.data;
   } catch (err) {
     console.log(err);
@@ -24,8 +22,8 @@ export const updateStatus = createAsyncThunk(
   async (updatedOrder: updatedOrder) => {
     const { orderId, address, updatedStatus } = updatedOrder;
     try {
-      const response = await axios.put(
-        `https://activitea-be.herokuapp.com/api/v1/orders/${orderId}`,
+      const response = await axiosInstance.put(
+        `/orders/${orderId}`,
         {
           address: address,
           status: updatedStatus,

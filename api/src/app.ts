@@ -11,6 +11,7 @@ import adminRouter from './routers/admin'
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
 import path from 'path'
+import { verifyAdmin } from './middlewares/verifyAdmin'
 
 dotenv.config({ path: '.env' })
 const app = express()
@@ -29,9 +30,11 @@ app.use(
 )
 
 // Set up routers
+
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/orders', orderRouter)
 app.use('/api/v1/admin', adminRouter)
+app.use('/admin', verifyAdmin)
 
 const publicPath = path.resolve(__dirname, '../public')
 app.use(express.static(publicPath))

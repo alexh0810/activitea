@@ -8,7 +8,7 @@ export const verifyAdmin = (
 ) => {
   const adminToken = req.cookies.token
   if (!adminToken) {
-    res.redirect('/admin/login')
+    return res.redirect('/login')
   }
   next()
 }

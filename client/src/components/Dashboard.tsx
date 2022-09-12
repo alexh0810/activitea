@@ -115,6 +115,7 @@ const Dashboard = () => {
             </thead>
             <tbody>
               {orders &&
+                orders.length > 0 &&
                 orders.map((order: Order) => (
                   <tr key={order._id}>
                     <td>{order?._id.slice(0, 5)}...</td>

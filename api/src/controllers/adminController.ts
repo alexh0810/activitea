@@ -36,7 +36,6 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         sameSite: 'none',
         secure: true,
         path: '/',
-        httpOnly: true,
       })
     )
     res.status(200).send('Successful')

@@ -8,10 +8,16 @@ export const login = createAsyncThunk(
   "login",
   async ({ username, password }: any) => {
     try {
-      const result = await axiosInstance.post("/admin/login", {
-        username,
-        password,
-      });
+      const result = await axiosInstance.post(
+        "/admin/login",
+        {
+          username,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       console.log(result);
     } catch (err) {
       console.log(err);

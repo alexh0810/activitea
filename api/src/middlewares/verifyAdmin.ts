@@ -8,7 +8,7 @@ export const verifyAdmin = (
 ) => {
   const adminToken = req.cookies.token
   if (!adminToken) {
-    throw new ApiError(403, 'Unauthorized')
+    res.redirect('/admin/login')
   }
   next()
 }

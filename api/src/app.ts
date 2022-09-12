@@ -14,31 +14,31 @@ import path from 'path'
 
 dotenv.config({ path: '.env' })
 const app = express()
-
-app.use(express.static('public'))
-app.get('/', (_req, res) => {
-  res.sendFile(path.join(__dirname + '/public/index.html'))
-})
-
-// Express configuration
+// Express configuration"
 app.set('port', process.env.PORT || 5000)
-
-app.use(
-  cors({
-    credentials: true,
-    origin: ['https://activitea.netlify.app', 'http://localhost:3000'],
-  })
-)
 app.use(apiContentType)
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:5000', 'https://activitea-be.herokuapp.com/'],
+  })
+)
 
 // Set up routers
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/orders', orderRouter)
 app.use('/api/v1/admin', adminRouter)
+
+const publicPath = path.resolve(__dirname, '../public')
+app.use(express.static(publicPath))
+app.use('/*', (_req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'))
+})
+
 // Custom API error handler
 app.use(apiErrorHandler)
 

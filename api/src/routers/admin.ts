@@ -6,5 +6,6 @@ const admin = Router()
 
 admin.post('/login', adminController.login)
 admin.post('/signup', adminController.createNewUser)
+admin.get('/admin', verifyAdmin, adminController.getAdmin)
 
 export default admin

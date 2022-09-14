@@ -4,6 +4,10 @@ import User from '../models/User'
 import userService from '../services/userService'
 import ApiError from '../helpers/apiError'
 
+const getAdmin = async (req: Request, res: Response, next: NextFunction) => {
+  return res.status(200).json('Admin is logged in')
+}
+
 const createNewUser = async (
   req: Request,
   res: Response,
@@ -44,4 +48,4 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-export default { login, createNewUser }
+export default { login, createNewUser, getAdmin }

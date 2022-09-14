@@ -41,9 +41,6 @@ const MenuMain = () => {
               ></Image>
               <h4>{product.title}</h4>
               <h5>${product.prices[0]}</h5>
-              <Button variant="outline-danger" className="add_to_cart_btn">
-                ADD TO CART
-              </Button>
             </Col>
           ))}
         </Row>

@@ -58,28 +58,6 @@ const ProductDetails = () => {
                         </option>
                       ))}
                   </Form.Select>
-
-                  <p className="toppings__title">Extra toppings</p>
-                  <Form.Check
-                    type="checkbox"
-                    id="toppings_list"
-                    label="Double boba (+1$)"
-                  ></Form.Check>
-                  <Form.Check
-                    type="checkbox"
-                    id="toppings_list"
-                    label="Chia seeds (+1$)"
-                  ></Form.Check>
-                  <Form.Check
-                    type="checkbox"
-                    id="toppings_list"
-                    label="Flan (+1$)"
-                  ></Form.Check>
-                  <Form.Check
-                    type="checkbox"
-                    id="toppings_list"
-                    label="Almond Jelly (+1$)"
-                  ></Form.Check>
                   <Container>
                     <Row className="toCart__container">
                       <Col className="quantity__form__container">

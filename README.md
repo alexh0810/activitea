@@ -11,16 +11,16 @@ Try it out here: https://activitea-be.herokuapp.com/
 ## Technology stacks 
 
 ### Frontend
--TypeScript 
--React
--SASS
--Bootstrap
--Jest 
+- TypeScript 
+- React
+- SASS
+- Bootstrap
+- Jest 
 
 ### Backend
--TypeScript
--NodeJS & ExpressJS
--Mongoose
+- TypeScript
+- NodeJS & ExpressJS
+- Mongoose
 
 ## Running the app
 
@@ -44,10 +44,11 @@ cd api && yarn test
 
 ### Client-side
 
+```bash
 |-- build
 |-- node_modules
 |-- public
-`-- src
+-- src
     |-- assets
     |-- imgs
     |-- components
@@ -62,6 +63,7 @@ cd api && yarn test
 |-- package.json
 |-- tsconfig.json
 |-- .gitignore
+```
 
 ##### components
 Contains all commonly shared UI components. All of them are functional components, and most of them are free of logic to ensure the reusalibility principle.

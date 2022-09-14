@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,6 +7,7 @@ import Image from "react-bootstrap/Image";
 import { FaShoppingCart } from "react-icons/fa";
 import Badge from "react-bootstrap/Badge";
 import Stack from "react-bootstrap/Stack";
+import { IoPersonCircle } from "react-icons/io5";
 
 import logoImage from "../assets/imgs/bubble-tea.png";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,8 @@ import { useAppSelector } from "../hooks/appHooks";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const quantity = useAppSelector((state) => state.cartReducer.quantity); 
+  const quantity = useAppSelector((state) => state.cartReducer.quantity);
+  const [isAdmin, setAdmin] = useState(false);
 
   return (
     <div>

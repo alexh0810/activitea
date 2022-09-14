@@ -48,7 +48,7 @@ cd api && yarn test
 |-- build
 |-- node_modules
 |-- public
-|-- src
+-- src
     |-- assets
     |-- imgs
     |-- components

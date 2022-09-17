@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 
 import { useParams } from "react-router-dom";
 import { useProduct } from "../hooks/useProduct";

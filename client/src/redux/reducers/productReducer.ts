@@ -7,7 +7,7 @@ const initialState: Product[] = [];
 
 export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
   try {
-    const response = await axiosInstance.get("/products");
+    const response = await axios.get("/products");
     return response.data;
   } catch (err) {
     console.log(err);

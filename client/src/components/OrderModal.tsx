@@ -14,7 +14,7 @@ const OrderModal = ({ total, show, handleClose }: any) => {
 
   const createOrder = async (data: Partial<Order>) => {
     try {
-      const res = await axios.post("https://activitea-be.herokuapp.com/api/v1/orders", data);
+      const res = await axios.post("/orders", data);
       if (res.status === 201) {
         dispatch(resetCart());
         navigate(`/orders/${res.data._id}`);

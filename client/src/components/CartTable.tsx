@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import { Button, Container, Card, Modal } from "react-bootstrap";
+import { Button, Container, Card, Form } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FaTrash } from "react-icons/fa";
 
-import { useAppSelector } from "../hooks/appHooks";
+import { useAppDispatch, useAppSelector } from "../hooks/appHooks";
 import OrderModal from "./OrderModal";
-import { useCreateOrder } from "../hooks/useCreateOrder";
+import { decreaseItem, deleteItemFromCart, increaseItem } from "../redux/reducers/cartReducer";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const CartTable = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.products);
   const cart = useAppSelector((state) => state.cartReducer);
+  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
-
   const [show, setShow] = useState(false);
 
   const handleOpenModal = () => {
@@ -43,7 +44,7 @@ const CartTable = () => {
             <tbody>
               {cartItems &&
                 cartItems.map((item) => (
-                  <tr>
+                  <tr key={item._id}>
                     <td>
                       <Image
                         fluid
@@ -55,10 +56,20 @@ const CartTable = () => {
                     <td>{item.title}</td>
                     <td>Boba</td>
                     <td>${item.price}</td>
-                    <td>{item.quantity}</td>
+                    <td className="quantity_container">
+                      <Button variant="outline-dark" className="quantity_btn" onClick={() => dispatch(increaseItem(item._id))}>
+                        <AiOutlinePlus fontSize={16} />
+                      </Button>
+                      {item.quantity}
+                      <Button variant="outline-dark" className="quantity_btn" onClick={() => dispatch(decreaseItem(item._id))}>
+                        <AiOutlineMinus fontSize={16} />
+                      </Button>
+                    </td>
                     <td>${item.price * item.quantity}</td>
                     <td>
-                      <FaTrash />
+                      <FaTrash
+                        onClick={() => dispatch(deleteItemFromCart(item._id))}
+                      />
                     </td>
                   </tr>
                 ))}

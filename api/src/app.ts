@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:5000', 'https://activitea-be.herokuapp.com/'],
+    origin: '*',
   })
 )
 

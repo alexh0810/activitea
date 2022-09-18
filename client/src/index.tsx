@@ -2,7 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
-import { CookiesProvider } from "react-cookie";
+import { persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 import App from "./App";
 import store from "./redux/store";
@@ -14,9 +15,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CookiesProvider>
+      <PersistGate loading={null} persistor={persistor}>
         <App />
-      </CookiesProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

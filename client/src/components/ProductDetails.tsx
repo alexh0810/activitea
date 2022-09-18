@@ -15,8 +15,8 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const product = useProduct(productId);
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState("");
   const [price, setPrice] = useState(0);
+  const [error, setError] = useState(false);
   const dispatch = useAppDispatch();
 
   const handleChange = (e: any) => {
@@ -32,57 +32,60 @@ const ProductDetails = () => {
   return (
     <div>
       <Container>
-        <Row>
-            <Col>
-              <Image fluid src={product?.image}></Image>
-            </Col>
-            <Col>
-              <Container className="product__details__container">
-                <Col className="product__title">
-                  <h2>{product?.title}</h2>
-                </Col>
-                <Col className="description">
-                  <p>{product?.description}</p>
-                </Col>
-                <Col>
-                  <Form.Select
-                    aria-label="Default select example"
-                    onChange={handleChange}
-                  >
-                    <option>Choose a size</option>
-                    {product &&
-                      product.size.map((size, index) => (
-                        <option key={index} value={index}>
-                          {size}
-                        </option>
-                      ))}
-                  </Form.Select>
-                  <Container>
-                    <Row className="toCart__container">
-                      <Col className="quantity__form__container">
-                        <Form.Control
-                          size="sm"
-                          type="number"
-                          placeholder="1"
-                          min="1"
-                          id="quantity_form"
-                          onChange={(e) => setQuantity(Number(e.target.value))}
-                        />
-                      </Col>
-                      <Col sm={10} className="to__cart__container">
-                        <Button
-                          variant="outline-danger"
-                          className="to_cart_btn"
-                          onClick={handleClick}
-                        >
-                          ADD TO CART
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Container>
-                </Col>
-              </Container>
-            </Col>
+        <Row className="details__container">
+          <Col>
+            <Image
+              className="product__details__img"
+              src={product?.image}
+            ></Image>
+          </Col>
+          <Col className="product__details__container">
+            <Container>
+              <Col className="product__title">
+                <h2>{product?.title}</h2>
+              </Col>
+              <Col className="description">
+                <p>{product?.description}</p>
+              </Col>
+              <Col>
+                <Form.Select
+                  aria-label="Default select example"
+                  onChange={handleChange}
+                >
+                  <option value="">Choose a size</option>
+                  {product &&
+                    product.size.map((size, index) => (
+                      <option key={index} value={index}>
+                        {size}
+                      </option>
+                    ))}
+                </Form.Select>
+                <Container>
+                  <Row className="toCart__container">
+                    <Col className="quantity__form__container">
+                      <Form.Control
+                        size="sm"
+                        type="number"
+                        placeholder="1"
+                        min="1"
+                        id="quantity_form"
+                        onChange={(e) => setQuantity(Number(e.target.value))}
+                      />
+                    </Col>
+                    <Col sm={10} className="to__cart__container">
+                      <Button
+                        variant="outline-danger"
+                        className="to_cart_btn"
+                        onClick={handleClick}
+                      >
+                        ADD TO CART
+                      </Button>
+                    </Col>
+                  </Row>
+                </Container>
+              </Col>
+            </Container>
+          </Col>
         </Row>
       </Container>
     </div>

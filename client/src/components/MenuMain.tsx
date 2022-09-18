@@ -28,10 +28,10 @@ const MenuMain = () => {
       <Container>
         <Row className="justify-content-md-center">
           <Col className="main__heading">
-            <h3>Our Tea</h3>
+            <h3 className="heading">Our Tea</h3>
           </Col>
         </Row>
-        <Row>
+        <Row className="menu__container"> 
           {products.map((product: Product) => (
             <Col key={product._id} sm={4} className="product__container">
               <Image

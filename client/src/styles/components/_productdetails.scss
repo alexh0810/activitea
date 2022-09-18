@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.details__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .toCart__container {
   display: flex;
   justify-content: center;
@@ -33,6 +38,14 @@
 
 .product__details__container {
   margin: 5em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.product__details__img {
+  max-width: 100%;
+  min-width: 400px;
 }
 
 .product__title {

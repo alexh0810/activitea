@@ -41,7 +41,7 @@ const Main = () => {
       <Container fluid="md" className="products__container">
         <Row className="justify-content-md-center">
           <Col className="main__heading">
-            <h3>Our Tea</h3>
+            <h3 className="heading">Our Tea</h3>
           </Col>
         </Row>
         <Row>

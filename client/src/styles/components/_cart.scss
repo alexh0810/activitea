@@ -2,6 +2,19 @@
   margin: 1em 0 1em 0;
 }
 
+.empty_cart_container {
+  margin: 1em 0 1em 0;
+  padding: 8em;
+}
+
+.empty_cart_content {
+  align-items: center;
+}
+
+.cart_icon {
+  opacity: 50%;
+}
+
 .quantity__btn {
   border: none;
   background-color: transparent;

@@ -15,7 +15,7 @@ import { useAppSelector } from "../hooks/appHooks";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const quantity = useAppSelector((state) => state.cartReducer.quantity);
+  const quantity = useAppSelector((state) => state.persistedReducer.quantity);
   const [isAdmin, setAdmin] = useState(false);
 
   return (
@@ -41,9 +41,9 @@ const NavBar = () => {
               </Nav>
             </Container>
             <Stack className="cart__container">
-              <Badge className="cart__quantity" bg="secondary">
-                {quantity}
-              </Badge>
+              { quantity > 0 && <Badge className="cart__quantity" bg="secondary">
+               {quantity}
+              </Badge>}
               <FaShoppingCart
                 className="cart__logo"
                 fontSize={28}

@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+.heading {
+  font-size: 36px;
+  font-weight: 700;
+}
+
 .product__img {
   max-width: 100%;
   width: 400px;
@@ -45,3 +50,6 @@
   box-shadow: rgb(212, 37, 21, 1) !important;
 }
 
+.menu__container {
+  margin: 5em;
+}

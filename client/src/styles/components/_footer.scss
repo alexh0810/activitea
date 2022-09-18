@@ -1,9 +1,12 @@
 .footer__container {
   background-color: #382b20;
   display: flex;
+  flex-wrap: wrap;
 }
 
-.footer__img {
+.footer__img { 
+  min-width: 280px;
+  height: 100%;
   max-width: 100%;
 }
 

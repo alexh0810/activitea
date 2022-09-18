@@ -48,7 +48,7 @@ cd api && yarn test
 |-- build
 |-- node_modules
 |-- public
--- src
+|-- src
     |-- assets
     |-- imgs
     |-- components
@@ -89,7 +89,7 @@ Contains reusable utility hooks
 
 ## Future improvements 
 
-- For now, the admin credentials are stored in the .env, in later versions, the admin credentials will be stored in the the DB, and an admin will have reserved rights to create other admins 
+- For now, the admin credentials are stored in the .env, in later versions, the admin credentials will be stored in the DB, and an admin will have reserved rights to create other admins 
 - User role added, the customer will be able to create their own account, have their own view to manage their orders 
 
 

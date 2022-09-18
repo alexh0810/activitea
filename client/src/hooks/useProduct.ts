@@ -10,7 +10,7 @@ export const useProduct = (productId: string | undefined) => {
   useEffect(() => {
     if (productId) {
       try {
-        axios.get(`/products/${productId}`).then(function (response) {
+        axiosInstance.get(`/products/${productId}`).then(function (response) {
           setProduct(response.data);
         });
       } catch (err) {

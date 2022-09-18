@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../config/config";
 import { useAppDispatch } from "../hooks/appHooks";
 import { resetCart } from "../redux/reducers/cartReducer";
 import { Order } from "../types/order";
@@ -14,7 +15,7 @@ const OrderModal = ({ total, show, handleClose }: any) => {
 
   const createOrder = async (data: Partial<Order>) => {
     try {
-      const res = await axios.post("/orders", data);
+      const res = await axiosInstance.post("/orders", data);
       if (res.status === 201) {
         dispatch(resetCart());
         navigate(`/orders/${res.data._id}`);
